@@ -16,7 +16,7 @@ services:
     image: go-global
     build:
        context: .
-       dockerfile: service-global/Dockerfile
+       dockerfile: ../Warehouse-Service-Global/Dockerfile
     ports:
        - "5554:5554"
     depends_on:
@@ -27,7 +27,7 @@ services:
     image: go-input
     build:
       context: .
-      dockerfile: service-input/Dockerfile
+      dockerfile: ../Warehouse-Service-Input/Dockerfile
     ports:
       - "8554:8554"
     depends_on:
@@ -38,7 +38,7 @@ services:
     image: go-master
     build:
       context: .
-      dockerfile: service-master/Dockerfile
+      dockerfile: ../Warehouse-Service-Master/Dockerfile
     ports:
       - '7554:7554'
     depends_on:
@@ -49,7 +49,7 @@ services:
     image: go-output
     build:
       context: .
-      dockerfile: service-output/Dockerfile
+      dockerfile: ../Warehouse-Service-Output/Dockerfile
     ports:
       - "9554:9554"
     depends_on:
@@ -60,7 +60,7 @@ services:
     image: go-reject
     build:
       context: .
-      dockerfile: service-reject/Dockerfile
+      dockerfile: ../Warehouse-Service-Reject/Dockerfile
     ports:
       - '6554:6554'
     depends_on:
