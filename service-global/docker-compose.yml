@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mongo:
+    image: 'mongo'
+    hostname: 'mongo'
+    environment:
+      - MONGO_INITDB_DATABASE=WServiceGlobal
+    ports:
+      - '27022:27022'
+    networks:
+      - WServiceGlobalNetwork
+
+  app:
+    container_name: 'go-global'
+    image: go-global
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5554:5554"
+    depends_on:
+      - 'mongo'
+
+networks:
+  WServiceGlobalNetwork:
+    driver: bridge
