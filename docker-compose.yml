@@ -11,6 +11,61 @@ services:
     networks:
       - WServiceNetwork
 
+  app_service_global:
+    container_name: 'go-global'
+    image: go-global
+    build:
+       context: .
+       dockerfile: service-global/Dockerfile
+    ports:
+       - "5554:5554"
+    depends_on:
+       - 'mongo'
+
+  app_service_input:
+    container_name: 'go-input'
+    image: go-input
+    build:
+      context: .
+      dockerfile: service-input/Dockerfile
+    ports:
+      - "8554:8554"
+    depends_on:
+      - 'mongo'
+
+  app_service_master:
+    container_name: 'go-master'
+    image: go-master
+    build:
+      context: .
+      dockerfile: service-master/Dockerfile
+    ports:
+      - '7554:7554'
+    depends_on:
+      - 'mongo'
+
+  app_service_output:
+    container_name: 'go-output'
+    image: go-output
+    build:
+      context: .
+      dockerfile: service-output/Dockerfile
+    ports:
+      - "9554:9554"
+    depends_on:
+      - 'mongo'
+
+  app_service_reject:
+    container_name: 'go-reject'
+    image: go-reject
+    build:
+      context: .
+      dockerfile: service-reject/Dockerfile
+    ports:
+      - '6554:6554'
+    depends_on:
+      - 'mongo'
+
 networks:
   WServiceNetwork:
     driver: bridge
