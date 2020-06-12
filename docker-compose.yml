@@ -8,3 +8,9 @@ services:
       - './dockervolume/mongodb:/data/db'
     ports:
       - 27017:27017
+    networks:
+      - WServiceNetwork
+
+networks:
+  WServiceNetwork:
+    driver: bridge
