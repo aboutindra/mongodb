@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mongo:
+    image: 'mongo'
+    hostname: 'mongo'
+    environment:
+      - MONGO_INITDB_DATABASE=WServiceInput
+    ports:
+      - '27021:27021'
+    networks:
+      - WServiceInputNetwork
+
+  app:
+    container_name: 'go-input'
+    image: go-input
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8554:8554"
+    depends_on:
+      - 'mongo'
+
+networks:
+  WServiceInputNetwork:
+    driver: bridge
