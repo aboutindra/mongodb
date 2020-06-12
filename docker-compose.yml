@@ -15,8 +15,7 @@ services:
     container_name: 'go-global'
     image: go-global
     build:
-       context: .
-       dockerfile: Warehouse-Service-Global/Dockerfile
+       command: cd Warehouse-Service-Global && docker build -t go-global .
     ports:
        - "5554:5554"
     depends_on:
@@ -26,8 +25,7 @@ services:
     container_name: 'go-input'
     image: go-input
     build:
-      context: .
-      dockerfile: Warehouse-Service-Input/Dockerfile
+      command: cd Warehouse-Service-Input && docker build -t go-input .
     ports:
       - "8554:8554"
     depends_on:
@@ -37,8 +35,7 @@ services:
     container_name: 'go-master'
     image: go-master
     build:
-      context: .
-      dockerfile: /Warehouse-Service-Master/Dockerfile
+      command: cd Warehouse-Service-Master && docker build -t go-master .
     ports:
       - '7554:7554'
     depends_on:
@@ -48,8 +45,7 @@ services:
     container_name: 'go-output'
     image: go-output
     build:
-      context: .
-      dockerfile: Warehouse-Service-Output/Dockerfile
+      command: cd Warehouse-Service-Output && docker build -t go-output .
     ports:
       - "9554:9554"
     depends_on:
@@ -59,8 +55,7 @@ services:
     container_name: 'go-reject'
     image: go-reject
     build:
-      context: .
-      dockerfile: Warehouse-Service-Reject/Dockerfile
+      command: cd Warehouse-Service-Reject && docker build -t go-reject .
     ports:
       - '6554:6554'
     depends_on:
