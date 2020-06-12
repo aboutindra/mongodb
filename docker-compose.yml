@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo
+    container_name: "mongo-database"
+    restart: always
+    volumes:
+      - './dockervolume/mongodb:/data/db'
+    ports:
+      - 27017:27017
