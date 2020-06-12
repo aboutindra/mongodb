@@ -2,7 +2,7 @@ version: '3.8'
 services:
   mongo:
     image: mongo
-    container_name: "mongo-database"
+    container_name: "mongo"
     restart: always
     volumes:
       - './dockervolume/mongodb:/data/db'
